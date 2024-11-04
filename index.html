@@ -8,16 +8,6 @@
         /* ライトモード・ナイトモードの切り替え */
         body {
             display: flex;
-            justify-content: center<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorite Words Widget</title>
-    <style>
-        /* ライトモード・ナイトモードの切り替え */
-        body {
-            display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -65,66 +55,6 @@
             } while (randomIndex === lastDisplayedIndex); // 前回と同じなら再抽選
             
             lastDisplayedIndex = randomIndex; // 現在のインデックスを記録
-            document.getElementById("word").textContent = `"${favoriteWords[randomIndex]}"`;
-        }
-
-        // ページ読み込み時にランダムな言葉を表示
-        displayRandomWord();
-
-        // ライトモードとナイトモードの切り替え
-        function applyColorScheme() {
-            const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            document.body.className = isDarkMode ? "dark-mode" : "light-mode";
-        }
-
-        // 初期状態のテーマを適用
-        applyColorScheme();
-
-        // カラースキーム変更時に自動でテーマを適用
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyColorScheme);
-    </script>
-</body>
-</html>
-
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: '游明朝', 'Yu Mincho', serif; /* 明朝体を指定 */
-            font-weight: 300; /* フォントの太さを調整 */
-            transition: background-color 0.3s, color 0.3s;
-        }
-        body.light-mode {
-            background-color: white;
-            color: #55534E; /* ライトモードの文字色 */
-        }
-        body.dark-mode {
-            background-color: #191919; /* ダークモードの透過背景色 */
-            color: #D3D3D3; /* ダークモードの文字色 */
-        }
-        h2 {
-            font-size: 1em; /* フォントサイズを設定 */
-            text-align: center;
-            padding: 0 20px;
-        }
-    </style>
-</head>
-<body>
-    <h2 id="word">ここにランダムな言葉が表示されます</h2>
-
-    <script>
-        const favoriteWords = [
-            "もっと自分を好きになる",
-            "今この瞬間を大切に生きる",
-            "今日という日は、残りの人生の最初の日である",
-            "世界はもっとおもしろいはずじゃない？",
-            "あきらめたらそこで試合終了だよ",
-            "自分の生きる人生を愛せ、自分が愛する人生を生きろ",
-            "月に手を伸ばせ　たとえ届かなくても",
-            "何があっても、何があっても、何があっても屈するな"
-        ];
-
-        function displayRandomWord() {
-            const randomIndex = Math.floor(Math.random() * favoriteWords.length);
             document.getElementById("word").textContent = `"${favoriteWords[randomIndex]}"`;
         }
 
