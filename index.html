@@ -5,53 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorite Words Widget</title>
     <style>
+        /* ライトモード・ナイトモードの切り替え */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f8;
             font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .widget {
-            width: 300px;
-            height: 200px;
+        body.light-mode {
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
+            color: black;
+        }
+        body.dark-mode {
+            background-color: black;
+            color: white;
         }
         h2 {
             font-size: 1.5em;
-            color: #333;
-            margin: 0;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
+            text-align: center;
+            padding: 0 20px;
         }
     </style>
 </head>
 <body>
-    <div class="widget">
-        <h2 id="word">ここにランダムな言葉が表示されます</h2>
-        <button onclick="displayRandomWord()">更新</button>
-    </div>
+    <h2 id="word">ここにランダムな言葉が表示されます</h2>
 
     <script>
         const favoriteWords = [
@@ -66,8 +46,20 @@
             document.getElementById("word").textContent = favoriteWords[randomIndex];
         }
 
-        // 初回ロード時に表示
+        // ページ読み込み時にランダムな言葉を表示
         displayRandomWord();
+
+        // ライトモードとナイトモードの切り替え
+        function applyColorScheme() {
+            const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.body.className = isDarkMode ? "dark-mode" : "light-mode";
+        }
+
+        // 初期状態のテーマを適用
+        applyColorScheme();
+
+        // カラースキーム変更時に自動でテーマを適用
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyColorScheme);
     </script>
 </body>
 </html>
