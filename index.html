@@ -13,6 +13,7 @@
             height: 100vh;
             margin: 0;
             font-family: '游ゴシック', 'Yu Gothic', sans-serif;
+            font-weight: 300; /* フォントの太さを調整 */
             transition: background-color 0.3s, color 0.3s;
         }
         body.light-mode {
@@ -38,12 +39,13 @@
             "もっと自分を好きになる",
             "今この瞬間を大切に生きる",
             "今日が一番若い日",
-            "世界はもっとおもしろいはずじゃない？"
+            "世界はもっとおもしろいはずじゃない？",
+            "あきらめたらそこで試合終了だよ"
         ];
 
         function displayRandomWord() {
             const randomIndex = Math.floor(Math.random() * favoriteWords.length);
-            document.getElementById("word").textContent = favoriteWords[randomIndex];
+            document.getElementById("word").textContent = `"${favoriteWords[randomIndex]}"`;
         }
 
         // ページ読み込み時にランダムな言葉を表示
